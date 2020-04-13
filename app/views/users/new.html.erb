@@ -1,0 +1,6 @@
+<p>新規登録</p>
+<%= form_for @user, url:'/users', html: {method: :post} do |f| %>
+<%= f.text_field :name %>
+<%= f.text_field :age %>
+<%= f.submit %>
+<% end %>
