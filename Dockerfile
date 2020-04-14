@@ -26,4 +26,6 @@ COPY . /myapp
 RUN bundle install
 ADD . $APP_ROOT
 
+VOLUME /usr/local/var/mysql
+
 CMD ["rails", "server", "-b", "0.0.0.0"]
