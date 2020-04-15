@@ -6,7 +6,7 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: root
     ports:
-      - "3306:3306"
+      - "3307:3307"
     volumes:
       # - /usr/local/var/mysql
       - /tmp/mysql.sock
@@ -14,15 +14,15 @@ services:
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
-      #- ./usr/rails/mysql/conf:/etc/mysql/conf.d:rw 
+      #- ./usr/rails/mysql/conf:/etc/mysql/conf.d:rw
       # Composefileからみた相対パスでmysql/confが呼び出されたら、etc/mysql/conf.dを使ってrw(読み込み・書き込み)を行う。実際は、再ビルド後も、DBの中身がリセットされないようにしてる。
-      #- ./mysql-datavolume:/var/lib/mysql 
+      #- ./mysql-datavolume:/var/lib/mysql
       # Composefileからみた相対パスでmysql-datavolumeが呼び出されたら、/var/lib/mysqlを指定して実行
      # - "bundle:/usr/local/bundle" # Composefileからみた相対パスでbundleが呼び出されたら、ローカルのbundleファイルを指定して実行。これにより、ローカルで実行したbundle installの内容が永続化(=変更内容の適用)される。
-      
+
       - .:/app_name
       # mysqldソケットファイルディレクトリを共有
-      # - dbsocket:/var/run/mysqld 
+      # - dbsocket:/var/run/mysqld
       # - dbsocket:/tmp/mysql.sock
     ports:
       - "3000:3000"
